@@ -1,5 +1,3 @@
-
-set interfaces {{ lo_interface.name }} unit {{ lo_interface.unit }} family inet address {{ lo_interface.address }}
 {% for bgp_group in bgp_groups %}
  set security authentication-key-chains key-chain {{ bgp_group.key_chain_name }} key 1 secret {{ bgp_group.key_chain_secret }}
  set security authentication-key-chains key-chain {{ bgp_group.key_chain_name }} key 1 start-time now
@@ -7,7 +5,7 @@ set interfaces {{ lo_interface.name }} unit {{ lo_interface.unit }} family inet 
  set protocols bgp group {{ bgp_group.name }} type external
  set protocols bgp group {{ bgp_group.name }} multipath multiple-as
  set protocols bgp group {{ bgp_group.name }} local-as {{ bgp_group.local_as_number }}
- set protocols bgp group {{ bgp_group.name }} local-address {{ bgp_group.local_lo0_address }}
+ set protocols bgp group {{ bgp_group.name }} local-address {{ lo_interface[bgp_group.local_lo].address }}
  set protocols bgp group {{ bgp_group.name }} family evpn signaling
  set protocols bgp group {{ bgp_group.name }} bfd-liveness-detection minimum-interval {{ bgp_group.bfd_minimum_interval }}
  set protocols bgp group {{ bgp_group.name }} bfd-liveness-detection multiplier {{ bgp_group.multiplier }}
@@ -17,4 +15,3 @@ set interfaces {{ lo_interface.name }} unit {{ lo_interface.unit }} family inet 
   set protocols bgp group {{ bgp_group.name }} neighbor {{ neighbor.peer }} peer-as {{ neighbor.asn }} multiop
  {% endfor %}
 {% endfor %}
-

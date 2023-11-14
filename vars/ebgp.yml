@@ -1,14 +1,8 @@
-# local interface
-lo_interface:
-  name: lo0
-  unit: 0
-  address: 10.0.0.1/24
-
 # eBGP Overlay
 ebgp_groups:
   - name: OVERLAY
     local_as_number: 65000
-    local_lo0_address: lo0
+    local_lo: lo0
     bfd_minimun_interval: 100
     multiplier: 16
     key_chain_name: KEY_CHAIN

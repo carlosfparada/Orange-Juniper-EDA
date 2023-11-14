@@ -4,14 +4,15 @@
   vars:
     ansible_command_timeout: 300
   vars_files:
-  - vars/main.yml
+  - vars/lo.yml
+  - vars/ebgp.yml
   tasks:
   - name: Config addresses
     junipernetworks.junos.junos_config:
-      src: "templates/addresses.j2"
+      src: "templates/lo.j2"
       confirm_commit: yes
       update: merge
-      comment: Config interfaces
+      comment: Config lo interfaces
   - name: Config eBGP Overlay
     junipernetworks.junos.junos_config:
       src: "templates/ebgp-overlay.j2"
