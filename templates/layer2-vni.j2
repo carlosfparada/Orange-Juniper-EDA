@@ -1,8 +1,6 @@
 {% for l2_vni in l2_vnis %}
 set routing-instances {{ l2_vni.name }} vtep-source-interface {{ l2_vni.lo_interface }}.0
 set routing-instances {{ l2_vni.name }} instance-type virtual-switch
-set routing-instances {{ l2_vni.name }} route-distinguisher {{ lo_interfaces[l2_vni.lo_interface].address }}:{{ l2_vni.vni_id }}
-
 {% endfor %}
 
 {#
