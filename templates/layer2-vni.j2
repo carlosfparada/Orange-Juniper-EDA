@@ -2,16 +2,6 @@
 set routing-instances {{ l2_vni.name }} vtep-source-interface {{ l2_vni.lo_interface }}.0
 set routing-instances {{ l2_vni.name }} instance-type virtual-switch
 set routing-instances {{ l2_vni.name }} route-distinguisher {{ lo_interfaces[l2_vni.lo_interface].address }}:{{ l2_vni.vni_id }}
-set routing-instances {{ l2_vni.name }} vrf-import {{ l2_vni.import }}
-set routing-instances {{ l2_vni.name }} vrf-target target:{{ l2_vni.asn }}:{{ l2_vni.vni_id }}
-set routing-instances {{ l2_vni.name }} protocols evpn encapsulation vxlan
-set routing-instances {{ l2_vni.name }} protocols evpn extended-vni-list {{ l2_vni.vni_id }}
-set routing-instances {{ l2_vni.name }} protocols evpn vni-options vni {{ l2_vni.vni_id }} vrf-target export target:{{ l2_vni.asn }}:{{ l2_vni.vni_id }}
-set routing-instances {{ l2_vni.name }} protocols evpn multicast-mode ingress-replication
-set routing-instances {{ l2_vni.name }} bridge-domains bd-{{ l2_vni.vlan_id }} vlan-id {{ l2_vni.vlan_id }}
-set routing-instances {{ l2_vni.name }} bridge-domains bd-{{ l2_vni.vlan_id }} routing-interface irb.{{ l2_vni.vlan_id }}
-set routing-instances {{ l2_vni.name }} bridge-domains bd-{{ l2_vni.vlan_id }} vxlan vni {{ l2_vni.vlan_id }}
-set routing-instances {{ l2_vni.name }} bridge-domains bd-{{ l2_vni.vlan_id }} vxlan ingress-node-replication
 
 {% endfor %}
 
