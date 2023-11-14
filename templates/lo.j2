@@ -1,4 +1,3 @@
 {% for lo_interface in lo_interfaces|dict2items %}
-set interfaces lo0 unit 0 family inet address 10.1.1.1
 set interfaces {{ lo_interface.key }} unit {{ lo_interface.value.unit }} family inet address {{ lo_interface.value.address }}
 {% endfor %}
