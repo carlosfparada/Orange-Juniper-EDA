@@ -1,4 +1,26 @@
-interfaces:
-  - name: ge-0/0/1
-    unit: 0
-    address: 172.17.18.19/24
+# test
+lo_interface:
+  name: lo0
+  unit: 0
+  address: 10.0.0.1/24
+
+# eBGP Overlay
+ebgp_groups:
+  - name: OVERLAY
+    local_as_number: 65000
+    local_lo0_address: lo0
+    bfd_minimun_interval: 100
+    multiplier: 16
+    key_chain_name: KEY_CHAIN
+    key_chain_secret: secret
+    neighbors:
+      - name: compute1
+        peer: 10.1.1.1 
+        asn: 65001
+      - name: compute2
+        peer: 10.2.2.1 
+        asn: 65002
+      - name: compute3
+        peer: 10.3.3.1 
+        asn: 65003
+
