@@ -1,5 +1,0 @@
-# local interface
-lo_interfaces:
-  lo0:
-    unit: 0
-    address: 10.0.0.1
