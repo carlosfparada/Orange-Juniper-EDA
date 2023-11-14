@@ -11,7 +11,4 @@ set protocols bgp group {{ ebgp_group.name }} bfd-liveness-detection minimum-int
 set protocols bgp group {{ ebgp_group.name }} bfd-liveness-detection multiplier {{ ebgp_group.multiplier }}
 set protocols bgp group {{ ebgp_group.name }} bfd-liveness-detection authentication key-chain {{ ebgp_group.key_chain_name }}
 set protocols bgp group {{ ebgp_group.name }} bfd-liveness-detection authentication algorithm keyed-md5
-{% for neighbor in ebgp_group.neighbors %}
-set protocols bgp group {{ ebgp_group.name }} neighbor {{ neighbor.peer }} peer-as {{ neighbor.asn }} multiop
-{% endfor %}
 {% endfor %}
