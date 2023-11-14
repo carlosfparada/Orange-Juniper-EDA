@@ -1,5 +1,5 @@
-- name: Config Juniper MX-460
-  hosts: mx-460
+- name: Config Juniper MX-480
+  hosts: mx-series
   gather_facts: no
   vars:
     ansible_command_timeout: 300
