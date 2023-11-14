@@ -1,16 +1,18 @@
-set protocols bgp group OVERLAY type external
-set protocols bgp group OVERLAY multipath multiple-as
-set protocols bgp group OVERLAY local-as <LOCAL_AS_NUMBER>
-set protocols bgp group OVERLAY local-address <LOCAL_LO0-ADDRESS>
-set protocols bgp group OVERLAY family evpn signaling
-set protocols bgp group OVERLAY bfd-liveness-detection minimum-interval <MINIMUM-INTERVAL>
-set protocols bgp group OVERLAY bfd-liveness-detection multiplier <MULTIPLIER>
-set protocols bgp group OVERLAY bfd-liveness-detection authentication key-chain <KEY-CHAIN-NAME>
-set protocols bgp group OVERLAY bfd-liveness-detection authentication algorithm keyed-md5
-set protocols bgp group OVERLAY neighbor <COMPUTE1-LO0-ADDRESS> peer-as <COMPUTE1-AS-NUMBER> multiop
-set protocols bgp group OVERLAY neighbor <COMPUTE2-LO0-ADDRESS> peer-as <COMPUTE2-AS-NUMBER> multiop
-set protocols bgp group OVERLAY neighbor <COMPUTE3-LO0-ADDRESS> peer-as <COMPUTE3-AS-NUMBER> multiop
+set routing-instances <VNI1-L2> vtep-source-interface lo0.0
+set routing-instances <VNI1-L2> instance-type virtual-switch
+set routing-instances <VNI1-L2> route-distinguisher <LO0-ADDRESS>:<ID-VNI-1>
+set routing-instances <VNI1-L2> vrf-import <VNI1-L2-IMPORT>
+set routing-instances <VNI1-L2> vrf-target target:<AS-NUMBER>:<ID-VNI-1>
+set routing-instances <VNI1-L2> protocols evpn encapsulation vxlan
+set routing-instances <VNI1-L2> protocols evpn extended-vni-list <ID-VNI-1>
+set routing-instances <VNI1-L2> protocols evpn vni-options vni <ID-VNI-1> vrf-target export target:<AS-NUMBER>:<ID-VNI-1>
+set routing-instances <VNI1-L2> protocols evpn multicast-mode ingress-replication
+set routing-instances <VNI1-L2> bridge-domains bd-<VNI1> vlan-id <VNI-1>
+set routing-instances <VNI1-L2> bridge-domains bd-<VNI1> routing-interface irb.<VNI-1>
+set routing-instances <VNI1-L2> bridge-domains bd-<VNI1> vxlan vni <VNI-1>
+set routing-instances <VNI1-L2> bridge-domains bd-<VNI1> vxlan ingress-node-replication
 
-set security authentication-key-chains key-chain <KEY-CHAIN-NAME> key 1 secret <SECRET>
-set security authentication-key-chains key-chain <KEY-CHAIN-NAME> key 1 start-time now
-set security authentication-key-chains key-chain <KEY-CHAIN-NAME> key 1 algorithm md5
+
+set policy-options policy-statement <VNI1-L2-IMPORT> term A from community <VNI-1>
+set policy-options policy-statement <VNI1-L2-IMPORT> term A then accept
+set policy-options community <VNI-1> members target:<AS-NUMBER>:<VNI-1>
