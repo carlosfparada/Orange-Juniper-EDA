@@ -7,7 +7,7 @@
   - vars/lo.yml
   - vars/ebgp.yml
   tasks:
-  - name: Config addresses
+  - name: Config lo interfaces
     junipernetworks.junos.junos_config:
       src: "templates/lo.j2"
       confirm_commit: yes

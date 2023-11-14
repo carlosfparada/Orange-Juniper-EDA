@@ -1,1 +1,3 @@
-set interfaces {{ lo_interface.name }} unit {{ lo_interface.unit }} family inet address {{ lo_interface.address }}
+{% for lo_interface in lo_interfaces | dict2items %}
+ set interfaces {{ lo_interface }} unit {{ lo_interfaces[lo_interface].unit }} family inet address {{ lo_interfaces[lo_interface].address }}
+{% endfor %}

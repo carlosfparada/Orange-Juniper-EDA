@@ -5,7 +5,7 @@
  set protocols bgp group {{ bgp_group.name }} type external
  set protocols bgp group {{ bgp_group.name }} multipath multiple-as
  set protocols bgp group {{ bgp_group.name }} local-as {{ bgp_group.local_as_number }}
- set protocols bgp group {{ bgp_group.name }} local-address {{ lo_interface[bgp_group.local_lo].address }}
+ set protocols bgp group {{ bgp_group.name }} local-address {{ lo_interfaces[bgp_group.local_lo].address }}
  set protocols bgp group {{ bgp_group.name }} family evpn signaling
  set protocols bgp group {{ bgp_group.name }} bfd-liveness-detection minimum-interval {{ bgp_group.bfd_minimum_interval }}
  set protocols bgp group {{ bgp_group.name }} bfd-liveness-detection multiplier {{ bgp_group.multiplier }}
