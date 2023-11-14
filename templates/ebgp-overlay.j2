@@ -7,4 +7,8 @@ set protocols bgp group {{ ebgp_group.name }} multipath multiple-as
 set protocols bgp group {{ ebgp_group.name }} local-as {{ ebgp_group.local_as_number }}
 set protocols bgp group {{ ebgp_group.name }} local-address {{ lo_interfaces[ebgp_group.local_lo].address }}
 set protocols bgp group {{ ebgp_group.name }} family evpn signaling
+set protocols bgp group {{ ebgp_group.name }} bfd-liveness-detection minimum-interval {{ ebgp_group.bfd_minimum_interval }}
+set protocols bgp group {{ ebgp_group.name }} bfd-liveness-detection multiplier {{ ebgp_group.multiplier }}
+set protocols bgp group {{ ebgp_group.name }} bfd-liveness-detection authentication key-chain {{ ebgp_group.key_chain_name }}
+set protocols bgp group {{ ebgp_group.name }} bfd-liveness-detection authentication algorithm keyed-md5
 {% endfor %}
