@@ -19,3 +19,21 @@ set protocols bgp group {{ ebgp_group.name }} neighbor {{ neighbor.peer }} peer-
 {% endfor %}
 {% endfor %}
 
+{#
+set protocols bgp group OVERLAY type external
+set protocols bgp group OVERLAY multipath multiple-as
+set protocols bgp group OVERLAY local-as <LOCAL_AS_NUMBER>
+set protocols bgp group OVERLAY local-address <LOCAL_LO0-ADDRESS>
+set protocols bgp group OVERLAY family evpn signaling
+set protocols bgp group OVERLAY bfd-liveness-detection minimum-interval <MINIMUM-INTERVAL>
+set protocols bgp group OVERLAY bfd-liveness-detection multiplier <MULTIPLIER>
+set protocols bgp group OVERLAY bfd-liveness-detection authentication key-chain <KEY-CHAIN-NAME>
+set protocols bgp group OVERLAY bfd-liveness-detection authentication algorithm keyed-md5
+set protocols bgp group OVERLAY neighbor <COMPUTE1-LO0-ADDRESS> peer-as <COMPUTE1-AS-NUMBER> multiop
+set protocols bgp group OVERLAY neighbor <COMPUTE2-LO0-ADDRESS> peer-as <COMPUTE2-AS-NUMBER> multiop
+set protocols bgp group OVERLAY neighbor <COMPUTE3-LO0-ADDRESS> peer-as <COMPUTE3-AS-NUMBER> multiop
+
+set security authentication-key-chains key-chain <KEY-CHAIN-NAME> key 1 secret <SECRET>
+set security authentication-key-chains key-chain <KEY-CHAIN-NAME> key 1 start-time now
+set security authentication-key-chains key-chain <KEY-CHAIN-NAME> key 1 algorithm md5
+#}
