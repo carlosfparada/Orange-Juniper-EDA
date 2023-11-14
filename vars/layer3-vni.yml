@@ -1,0 +1,8 @@
+# Layer 2 VNI
+layer3_vnis:
+  - name: L3-VNI1
+    # vlan-id: 101
+    # vni_id: 101
+    # import: IMPORT-L2-VNI1
+
+

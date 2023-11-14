@@ -4,7 +4,9 @@
   vars:
     ansible_command_timeout: 300
   vars_files:
-    - vars/ebgp.yml
+    - vars/ebgp-overlay.yml
+    - vars/layer2-vni.yml
+    - vars/layer3-vni.yml
   tasks:
     - name: Config eBGP Overlay
       junipernetworks.junos.junos_config:

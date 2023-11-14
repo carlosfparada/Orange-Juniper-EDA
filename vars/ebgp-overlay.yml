@@ -7,7 +7,7 @@ lo_interfaces:
 # eBGP Overlay
 ebgp_groups:
   - name: OVERLAY
-    local_as_number: 65000
+    local_asn: 65000
     local_lo: lo0
     bfd_minimum_interval: 100
     multiplier: 16

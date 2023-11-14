@@ -1,0 +1,10 @@
+# Layer 2 VNI
+layer2_vnis:
+  - name: L2-VNI1
+    vlan-id: 101
+    vni_id: 101
+    import: IMPORT-L2-VNI1
+    asn: 65000
+    lo_interface: lo0
+
+
