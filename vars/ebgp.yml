@@ -3,7 +3,7 @@ ebgp_groups:
   - name: OVERLAY
     local_as_number: 65000
     local_lo: lo0
-    bfd_minimun_interval: 100
+    bfd_minimum_interval: 100
     multiplier: 16
     key_chain_name: KEY_CHAIN
     key_chain_secret: secret
