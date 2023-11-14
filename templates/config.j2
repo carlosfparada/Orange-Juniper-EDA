@@ -1,7 +1,3 @@
-set protocols pim rp static address {{vxlans_infra.pim_rp}}
-{% for vxlan in vxlans_infra.vxlans %}
-set vlans {{vxlan.name}} vlan-id {{vxlan.vlan_id}} vxlan vni {{vxlan.vni}} multicast-group {{vxlan.multicast_group}}
-set vlans {{vxlan.name}} vxlan encapsulate-inner-vlan
-set vlans {{vxlan.name}} vxlan unreachable-vtep-aging-timer {{vxlan.aging_timer}}
+{% for interface in interfaces %}
+set interfaces {{ interface.name }} unit {{ interface.unit }} family inet address {{ interface.address }}
 {% endfor %}
-{# set protocols l2-learning decapsulate-accept-inner-vlan #}

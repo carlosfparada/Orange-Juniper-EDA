@@ -1,0 +1,4 @@
+interfaces:
+  - name: ge-0/0/1
+    unit: 0
+    address: 172.17.18.19/24

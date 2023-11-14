@@ -11,4 +11,4 @@
       src: "templates/config.j2"
       confirm_commit: yes
       update: merge
-      comment: Config Juniper
+      comment: Config interfaces
