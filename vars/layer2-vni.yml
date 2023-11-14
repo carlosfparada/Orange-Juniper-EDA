@@ -1,5 +1,5 @@
 # Layer 2 VNI
-layer2_vnis:
+l2_vnis:
   - name: L2-VNI1
     vlan-id: 101
     vni_id: 101
