@@ -1,4 +1,4 @@
-# test
+# local interface
 lo_interface:
   name: lo0
   unit: 0
