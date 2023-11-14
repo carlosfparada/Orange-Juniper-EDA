@@ -1,0 +1,13 @@
+set routing-instances <VNI1-L3> instance-type vrf
+set routing-instances <VNI1-L3> interface irb.<VNI-1>
+set routing-instances <VNI1-L3> route-distinguisher <LO0-ADDRESS>:<ID-VNI-1>
+set routing-instances <VNI1-L3> vrf-import <VNI1-L3-IMPORT> 
+set routing-instances <VNI1-L3> vrf-export <VNI1-L3-EXPORT> 
+set routing-instances <VNI1-L3> vrf-table-label
+
+set interfaces irb unit <VNI1> family inet address <IRB-VNI1-ADDRESS>
+
+set policy-options policy-statement <VNI1-L3-IMPORT> term A from community <VPN1>
+set policy-options policy-statement <VNI1-L3-IMPORT> term A then accept
+
+set policy-options policy-statement <VNI1-L3-EXPORT> term A then accept
