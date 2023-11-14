@@ -8,7 +8,7 @@
   tasks:
   - name: Config
     junipernetworks.junos.junos_config:
-      src: "templates/config.j2"
+      src: "templates/addresses.j2"
       confirm_commit: yes
       update: merge
       comment: Config interfaces
