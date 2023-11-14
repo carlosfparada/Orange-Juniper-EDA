@@ -2,4 +2,9 @@
 set security authentication-key-chains key-chain {{ ebgp_group.key_chain_name }} key 1 secret {{ ebgp_group.key_chain_secret }}
 set security authentication-key-chains key-chain {{ ebgp_group.key_chain_name }} key 1 start-time now
 set security authentication-key-chains key-chain {{ ebgp_group.key_chain_name }} key 1 algorithm md5
+set protocols bgp group {{ ebgp_group.name }} type external
+set protocols bgp group {{ ebgp_group.name }} multipath multiple-as
+set protocols bgp group {{ ebgp_group.name }} local-as {{ ebgp_group.local_as_number }}
+set protocols bgp group {{ ebgp_group.name }} local-address {{ lo_interfaces[ebgp_group.local_lo].address }}
+set protocols bgp group {{ ebgp_group.name }} family evpn signaling
 {% endfor %}
