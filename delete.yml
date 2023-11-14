@@ -1,4 +1,4 @@
-- name: Config Juniper MX-480
+- name: Delete Juniper MX-480
   hosts: mx-series
   gather_facts: no
   vars:
@@ -6,9 +6,9 @@
   vars_files:
     - vars/ebgp.yml
   tasks:
-    - name: Config eBGP Overlay
+    - name: Delete eBGP Overlay
       junipernetworks.junos.junos_config:
-        src: "templates/ebgp-overlay.j2"
+        src: "templates/ebgp-overlay-delete.j2"
         confirm_commit: yes
         update: merge
-        comment: Config eBGP Overlay
+        comment: Delete eBGP Overlay
