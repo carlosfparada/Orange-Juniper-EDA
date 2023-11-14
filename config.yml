@@ -6,9 +6,15 @@
   vars_files:
   - vars/main.yml
   tasks:
-  - name: Config
+  - name: Config addresses
     junipernetworks.junos.junos_config:
       src: "templates/addresses.j2"
       confirm_commit: yes
       update: merge
       comment: Config interfaces
+  - name: Config eBGP Overlay
+    junipernetworks.junos.junos_config:
+      src: "templates/ebgp-overlay.j2"
+      confirm_commit: yes
+      update: merge
+      comment: Config eBGP Overlay
