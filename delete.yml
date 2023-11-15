@@ -12,3 +12,15 @@
         confirm_commit: yes
         update: merge
         comment: Delete eBGP Overlay
+    - name: Delete Layer 3 VNIs
+      junipernetworks.junos.junos_config:
+        src: "templates/vni-layer3-delete.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Delete Layer 3 VNIs
+    - name: Delete Layer 2 VNIs
+      junipernetworks.junos.junos_config:
+        src: "templates/vni-layer2-delete.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Delete Layer 2 VNIs        

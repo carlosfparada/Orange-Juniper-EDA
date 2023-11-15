@@ -1,0 +1,30 @@
+{% for vni in vnis %}
+delete policy-options community {{ vni.community }} members target:{{ vni.asn }}:{{ vni.vlan_id }}
+delete policy-options policy-statement {{ vni.l3.import }} term {{ vni.term }} from community {{ vni.community }}
+delete policy-options policy-statement {{ vni.l3.import }} term {{ vni.term }} then accept
+delete policy-options policy-statement {{ vni.l3.export }} term {{ vni.term }} then accept
+delete routing-instances {{ vni.l3.name }} instance-type vrf
+delete routing-instances {{ vni.l3.name }} interface irb.{{ vni.vlan_id }}
+delete routing-instances {{ vni.l3.name }} route-distinguisher {{ lo_interfaces[vni.lo_interface].address }}:{{ vni.vni_id }}
+delete routing-instances {{ vni.l3.name }} vrf-import {{ vni.l3.import }}
+delete routing-instances {{ vni.l3.name }} vrf-export {{ vni.l3.import }}
+delete routing-instances {{ vni.l3.name }} vrf-table-label
+delete interfaces irb unit {{ vni.l3.unit }} family inet address {{ vni.l3.unit }}
+{% endfor %}
+
+
+{#
+set routing-instances <VNI1-L3> instance-type vrf
+set routing-instances <VNI1-L3> interface irb.<VNI-1>
+set routing-instances <VNI1-L3> route-distinguisher <LO0-ADDRESS>:<ID-VNI-1>
+set routing-instances <VNI1-L3> vrf-import <VNI1-L3-IMPORT> 
+set routing-instances <VNI1-L3> vrf-export <VNI1-L3-EXPORT> 
+set routing-instances <VNI1-L3> vrf-table-label
+
+set interfaces irb unit <VNI1> family inet address <IRB-VNI1-ADDRESS>
+
+set policy-options policy-statement <VNI1-L3-IMPORT> term A from community <VPN1>
+set policy-options policy-statement <VNI1-L3-IMPORT> term A then accept
+
+set policy-options policy-statement <VNI1-L3-EXPORT> term A then accept
+#}
