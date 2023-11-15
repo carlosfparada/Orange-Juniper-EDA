@@ -1,8 +1,7 @@
 {% for vni in vnis %}
 delete policy-options community {{ vni.community }} members target:{{ vni.asn }}:{{ vni.vlan_id }}
-delete policy-options policy-statement {{ vni.l3.import }} term {{ vni.term }} from community {{ vni.community }}
-delete policy-options policy-statement {{ vni.l3.import }} term {{ vni.term }} then accept
-delete policy-options policy-statement {{ vni.l3.export }} term {{ vni.term }} then accept
+delete policy-options policy-statement {{ vni.l3.import }}
+delete policy-options policy-statement {{ vni.l3.export }}
 delete routing-instances {{ vni.l3.name }}
 delete interfaces irb unit {{ vni.vlan_id }} family inet address {{ vni.l3.address }}
 {% endfor %}
@@ -21,5 +20,6 @@ set interfaces irb unit <VNI1> family inet address <IRB-VNI1-ADDRESS>
 set policy-options policy-statement <VNI1-L3-IMPORT> term A from community <VPN1>
 set policy-options policy-statement <VNI1-L3-IMPORT> term A then accept
 
+set policy-options policy-statement <VNI1-L3-EXPORT> term A then community add <VPN1>
 set policy-options policy-statement <VNI1-L3-EXPORT> term A then accept
 #}
