@@ -1,6 +1,7 @@
 # Layer 2 VNI
 l3_vnis:
   - name: L3-VNI1
+    term: TERM
     vlan_id: 101
     vni_id: 101
     unit: 0
