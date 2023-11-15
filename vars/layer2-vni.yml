@@ -1,7 +1,7 @@
 # Layer 2 VNI
 l2_vnis:
   - name: L2-VNI1
-    term: TERM
+    term: A
     vlan_id: 101
     vni_id: 101
     import: IMPORT-L2-VNI1
