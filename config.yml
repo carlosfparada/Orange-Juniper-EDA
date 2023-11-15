@@ -13,12 +13,12 @@
         confirm_commit: yes
         update: merge
         comment: Router setup
-    # - name: Config eBGP Overlay
-    #   junipernetworks.junos.junos_config:
-    #     src: "templates/ebgp.j2"
-    #     confirm_commit: yes
-    #     update: merge
-    # #     comment: Config eBGP Overlay
+    - name: Config eBGP Overlay
+      junipernetworks.junos.junos_config:
+        src: "templates/ebgp.j2"
+        confirm_commit: yes
+        update: merge
+    #     comment: Config eBGP Overlay
     - name: Config Layer 2 VNIs
       junipernetworks.junos.junos_config:
         src: "templates/vni-layer2.j2"
