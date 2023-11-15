@@ -1,5 +1,5 @@
 {% for lo_interface in lo_interfaces|dict2items %}
-delete interfaces {{ lo_interface.key }} unit {{ lo_interface.value.unit }} family inet address {{ lo_interface.value.address }}
+delete interfaces {{ lo_interface.key }}
 {% endfor %}
 {% for ebgp_group in ebgp_groups %}
 delete security authentication-key-chains key-chain {{ ebgp_group.key_chain_name }}
