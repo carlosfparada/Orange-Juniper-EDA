@@ -1,6 +1,6 @@
 {% for vni in vnis %}
 set policy-options community {{ vni.l3.community }} members target:{{ vni.asn }}:{{ vni.vlan_id }}
-set policy-options policy-statement {{ vni.l3.import }} term {{ vni.term }} from community {{ vni.l3community }}
+set policy-options policy-statement {{ vni.l3.import }} term {{ vni.term }} from community {{ vni.l3.community }}
 set policy-options policy-statement {{ vni.l3.import }} term {{ vni.term }} then accept
 set policy-options policy-statement {{ vni.l3import }} term {{ vni.term }} then accept
 set routing-instances {{ vni.l3.name }} instance-type vrf
