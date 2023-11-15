@@ -6,9 +6,6 @@ set routing-instances {{ l3_vni.name }} vrf-import {{ l3_vni.import }}
 set routing-instances {{ l3_vni.name }} vrf-export {{ l3_vni.import }}
 set routing-instances {{ l3_vni.name }} vrf-table-label
 set interfaces irb unit {{ l3_vni.unit }} family inet address {{ l3_vni.unit }}
-set policy-options policy-statement {{ l3_vni.import }} term {{ l3_vni.term }} from community {{ l3_vni.community }}
-set policy-options policy-statement {{ l3_vni.import }} term {{ l3_vni.term }} then accept
-set policy-options policy-statement {{ l3_vni.import }} term {{ l3_vni.term }} then accept
 {% endfor %}
 
 
