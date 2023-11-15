@@ -1,20 +1,5 @@
 {% for vni in vnis %}
-delete policy-options community {{ vni.vlan_id }} members target:{{ vni.asn }}:{{ vni.vlan_id }}
-delete policy-options policy-statement {{ vni.l2.import }} term {{ vni.term }} from community {{ vni.vlan_id }}
-delete policy-options policy-statement {{ vni.l2.import }} term {{ vni.term }} then accept
-delete routing-instances {{ vni.l2.name }} vtep-source-interface {{ vni.lo_interface }}.0
-delete routing-instances {{ vni.l2.name }} instance-type virtual-switch
-delete routing-instances {{ vni.l2.name }} route-distinguisher {{ lo_interfaces[vni.lo_interface].address }}:{{ vni.vni_id }}
-delete routing-instances {{ vni.l2.name }} vrf-import {{ vni.l2.import }}
-delete routing-instances {{ vni.l2.name }} vrf-target target:{{ vni.asn }}:{{ vni.vni_id }}
-delete routing-instances {{ vni.l2.name }} protocols evpn encapsulation vxlan
-delete routing-instances {{ vni.l2.name }} protocols evpn extended-vni-list {{ vni.vni_id }}
-delete routing-instances {{ vni.l2.name }} protocols evpn vni-options vni {{ vni.vni_id }} vrf-target export target:{{ vni.asn }}:{{ vni.vni_id }}
-delete routing-instances {{ vni.l2.name }} protocols evpn multicast-mode ingress-replication
-delete routing-instances {{ vni.l2.name }} bridge-domains bd-{{ vni.vlan_id }} vlan-id {{ vni.vlan_id }}
-delete routing-instances {{ vni.l2.name }} bridge-domains bd-{{ vni.vlan_id }} routing-interface irb.{{ vni.vlan_id }}
-delete routing-instances {{ vni.l2.name }} bridge-domains bd-{{ vni.vlan_id }} vxlan vni {{ vni.vlan_id }}
-delete routing-instances {{ vni.l2.name }} bridge-domains bd-{{ vni.vlan_id }} vxlan ingress-node-replication
+delete routing-instances {{ vni.l2.name }}
 {% endfor %}
 
 {#

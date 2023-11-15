@@ -17,5 +17,6 @@ vnis:
       import: IMPORT-L2-VNI1
     l3:
       name: L3-VNI1
+      address: 10.1.1.1
       import: IMPORT-L3-VNI1
       export: EXPORT-L3-VNI1

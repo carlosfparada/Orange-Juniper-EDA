@@ -2,19 +2,17 @@
 set policy-options community {{ vni.vlan_id }} members target:{{ vni.asn }}:{{ vni.vlan_id }}
 set policy-options policy-statement {{ vni.l2.import }} term {{ vni.term }} from community {{ vni.vlan_id }}
 set policy-options policy-statement {{ vni.l2.import }} term {{ vni.term }} then accept
+
 set routing-instances {{ vni.l2.name }} vtep-source-interface {{ vni.lo_interface }}.0
-set routing-instances {{ vni.l2.name }} instance-type virtual-switch
+set routing-instances {{ vni.l2.name }} instance-type mac-vrf
 set routing-instances {{ vni.l2.name }} route-distinguisher {{ lo_interfaces[vni.lo_interface].address }}:{{ vni.vni_id }}
-set routing-instances {{ vni.l2.name }} vrf-import {{ vni.l2.import }}
 set routing-instances {{ vni.l2.name }} vrf-target target:{{ vni.asn }}:{{ vni.vni_id }}
 set routing-instances {{ vni.l2.name }} protocols evpn encapsulation vxlan
 set routing-instances {{ vni.l2.name }} protocols evpn extended-vni-list {{ vni.vni_id }}
-set routing-instances {{ vni.l2.name }} protocols evpn vni-options vni {{ vni.vni_id }} vrf-target export target:{{ vni.asn }}:{{ vni.vni_id }}
-set routing-instances {{ vni.l2.name }} protocols evpn multicast-mode ingress-replication
+set routing-instances {{ vni.l2.name }} protocols evpn default-gateway do-not-advertise
 set routing-instances {{ vni.l2.name }} bridge-domains bd-{{ vni.vlan_id }} vlan-id {{ vni.vlan_id }}
 set routing-instances {{ vni.l2.name }} bridge-domains bd-{{ vni.vlan_id }} routing-interface irb.{{ vni.vlan_id }}
 set routing-instances {{ vni.l2.name }} bridge-domains bd-{{ vni.vlan_id }} vxlan vni {{ vni.vlan_id }}
-set routing-instances {{ vni.l2.name }} bridge-domains bd-{{ vni.vlan_id }} vxlan ingress-node-replication
 {% endfor %}
 
 {#

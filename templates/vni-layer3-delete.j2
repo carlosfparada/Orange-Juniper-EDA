@@ -3,13 +3,8 @@ delete policy-options community {{ vni.community }} members target:{{ vni.asn }}
 delete policy-options policy-statement {{ vni.l3.import }} term {{ vni.term }} from community {{ vni.community }}
 delete policy-options policy-statement {{ vni.l3.import }} term {{ vni.term }} then accept
 delete policy-options policy-statement {{ vni.l3.export }} term {{ vni.term }} then accept
-delete routing-instances {{ vni.l3.name }} instance-type vrf
-delete routing-instances {{ vni.l3.name }} interface irb.{{ vni.vlan_id }}
-delete routing-instances {{ vni.l3.name }} route-distinguisher {{ lo_interfaces[vni.lo_interface].address }}:{{ vni.vni_id }}
-delete routing-instances {{ vni.l3.name }} vrf-import {{ vni.l3.import }}
-delete routing-instances {{ vni.l3.name }} vrf-export {{ vni.l3.import }}
-delete routing-instances {{ vni.l3.name }} vrf-table-label
-delete interfaces irb unit {{ vni.vlan_id }} family inet address {{ vni.vlan_id }}
+delete routing-instances {{ vni.l3.name }}
+delete interfaces irb unit {{ vni.vlan_id }} family inet address {{ vni.l3.address }}
 {% endfor %}
 
 
