@@ -6,7 +6,7 @@ lo_interfaces:
 
 vnis:
   - name: VNI1
-    vni_id: 101
+    vni_id: 10100
     vlan_id: 101
     term: A
     asn: 65000
@@ -17,6 +17,5 @@ vnis:
       import: IMPORT-L2-VNI1
     l3:
       name: L3-VNI1
-      unit: 0
       import: IMPORT-L3-VNI1
       export: EXPORT-L3-VNI1
