@@ -4,6 +4,7 @@ l3_vnis:
     vlan_id: 101
     vni_id: 101
     unit: 0
+    lo_interface: lo0
     address: 10.1.1.1
     community: comty
     import: IMPORT-L3-VNI1
