@@ -7,7 +7,7 @@
   sources:
      - ansible.eda.url_check:
         urls:
-          - http://webserver
+          - http://www.google.com
         delay: 10
 
   rules:
