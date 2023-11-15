@@ -1,0 +1,8 @@
+# Loopback interfaces
+lo_interfaces:
+  lo0:
+    unit: 0
+    address: 10.0.0.1
+
+# Router - id
+router_id: 10.0.0.1

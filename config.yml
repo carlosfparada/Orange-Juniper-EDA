@@ -7,6 +7,12 @@
     - vars/ebgp.yml
     - vars/vni.yml
   tasks:
+    - name: Router setup (not automation needed in PoC)
+      junipernetworks.junos.junos_config:
+        src: "templates/setup.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Config Layer 3 VNIs
     # - name: Config eBGP Overlay
     #   junipernetworks.junos.junos_config:
     #     src: "templates/ebgp.j2"

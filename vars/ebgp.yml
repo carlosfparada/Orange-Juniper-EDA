@@ -1,9 +1,3 @@
-# Loopback interfaces
-lo_interfaces:
-  lo0:
-    unit: 0
-    address: 10.0.0.1
-
 # eBGP Overlay
 ebgp_groups:
   - name: OVERLAY

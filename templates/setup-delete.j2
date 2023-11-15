@@ -1,0 +1,4 @@
+{% for lo_interface in lo_interfaces|dict2items %}
+delete interfaces {{ lo_interface.key }}
+{% endfor %}
+delete routing-option router-id {{ router_id }}
