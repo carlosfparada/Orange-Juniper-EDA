@@ -12,10 +12,10 @@ vnis:
     lo_interface: lo0
     asn: 65000
     l2:
-      name: VNI1-L2
+      name: L2-VNI1
       import: IMPORT-L2-VNI1
     l3:
-      name: VNI1-L3
+      name: l3-VNI1
       unit: 0
       community: community1
       import: IMPORT-L3-VNI1
