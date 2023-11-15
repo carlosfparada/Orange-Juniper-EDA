@@ -11,12 +11,12 @@ vnis:
     term: A
     lo_interface: lo0
     asn: 65000
+    community: community1
     l2:
       name: L2-VNI1
       import: IMPORT-L2-VNI1
     l3:
       name: L3-VNI1
       unit: 0
-      community: community1
       import: IMPORT-L3-VNI1
       export: EXPORT-L3-VNI1
