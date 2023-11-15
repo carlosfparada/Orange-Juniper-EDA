@@ -2,7 +2,7 @@
 set routing-instances {{ vni.l2.name }} vtep-source-interface {{ vni.lo_interface }}.0
 set routing-instances {{ vni.l2.name }} instance-type mac-vrf
 set routing-instances {{ vni.l2.name }} service-type vlan-based
-set routing-instances {{ vni.l2.name }} route-distinguisher {{ lo_interfaces[vni.lo_interface].address }}:{{ vni.vni_id }}
+set routing-instances {{ vni.l2.name }} route-distinguisher {{ lo_interfaces[vni.lo_interface].address }}:{{ vni.vlan_id }}
 set routing-instances {{ vni.l2.name }} vrf-target target:{{ vni.asn }}:{{ vni.vni_id }}
 set routing-instances {{ vni.l2.name }} protocols evpn encapsulation vxlan
 set routing-instances {{ vni.l2.name }} protocols evpn extended-vni-list {{ vni.vni_id }}
@@ -30,4 +30,18 @@ set routing-instances <VNI1-L2> bridge-domains bd-<VNI1> vxlan ingress-node-repl
 set policy-options policy-statement <VNI1-L2-IMPORT> term A from community <VNI-1>
 set policy-options policy-statement <VNI1-L2-IMPORT> term A then accept
 set policy-options community <VNI-1> members target:<AS-NUMBER>:<VNI-1>
+#}
+
+{# new
+set routing-instances L2-VNI vtep-source-interface lo0.0
+set routing-instances L2-VNI instance-type mac-vrf
+set routing-instances L2-VNI service-type vlan-based
+set routing-instances L2-VNI route-distinguisher 10.0.0.1:101
+set routing-instances L2-VNI vrf-target target:65000:101
+set routing-instances L2-VNI protocols evpn encapsulation vxlan
+set routing-instances L2-VNI protocols evpn default-gateway do-not-advertise
+set routing-instances L2-VNI protocols evpn extended-vni-list 101
+set routing-instances L2-VNI bridge-domains bd-101 vlan-id 101
+set routing-instances L2-VNI bridge-domains bd-101 routing-interface irb.101
+set routing-instances L2-VNI bridge-domains bd-101 vxlan vni 101
 #}
