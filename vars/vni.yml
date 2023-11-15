@@ -1,9 +1,9 @@
+# Loopback interfaces
 lo_interfaces:
   lo0:
     unit: 0
     address: 10.0.0.1
 
-# 
 # Layer 2 VNI
 l2_vnis:
   - name: L2-VNI1
