@@ -25,6 +25,7 @@
       condition: event.url_check.status == "down"
     ## Define the action we should take should the condition be met  
       action:
+        debug:
           msg: "Hello world 2"
         # run_playbook:
         #   name: fix_web.yml
