@@ -1,7 +1,7 @@
-set routing-option router-id {{ router_id }}
 {% for lo_interface in lo_interfaces|dict2items %}
 set interfaces {{ lo_interface.key }} unit {{ lo_interface.value.unit }} family inet address {{ lo_interface.value.address }}
 {% endfor %}
+set routing-option router-id {{ router_id }}
 {% for ebgp_group in ebgp_groups %}
 set security authentication-key-chains key-chain {{ ebgp_group.key_chain_name }} key 1 secret {{ ebgp_group.key_chain_secret }}
 set security authentication-key-chains key-chain {{ ebgp_group.key_chain_name }} key 1 start-time now
