@@ -2,11 +2,11 @@
 l2_vnis:
   - name: L2-VNI1
     term: A
-    vlan_id: 101
-    vni_id: 101
+    vlan_id: 102
+    vni_id: 102
+    bd: 103
     import: IMPORT-L2-VNI1
     asn: 65000
     lo_interface: lo0
-    bd: 101
 
 
