@@ -1,0 +1,22 @@
+- name: Gather facts QFX-10000
+  hosts: qfx-series
+  gather_facts: no
+  vars:
+    ansible_command_timeout: 300
+  vars_files:
+  - vars/main.yml
+  tasks:
+  - name: Gather Facts
+    junipernetworks.junos.junos_facts:
+      gather_subset:
+        - all
+      gather_network_resources:
+      #  - "interfaces"
+      #  - "l3_interfaces"
+      #  - "vlans"
+      #  - "bgp_global"
+    register: _facts
+
+  - name: Debug gathered facts
+    debug:
+      var: _facts
