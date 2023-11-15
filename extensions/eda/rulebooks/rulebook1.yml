@@ -2,7 +2,7 @@
 # ansible-rulebook --rulebook url-check-example.yml -i inventory_web.yml --print-events
 
 - name: Listen for events on a webhook
-  hosts: web
+  hosts: localhost
   ## Define our source for events
   sources:
      - ansible.eda.url_check:
