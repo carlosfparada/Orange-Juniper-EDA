@@ -3,5 +3,5 @@ delete policy-options community {{ vni.community }} members target:{{ vni.asn }}
 delete policy-options policy-statement {{ vni.l3.import }}
 delete policy-options policy-statement {{ vni.l3.export }}
 delete routing-instances {{ vni.l3.name }}
-delete interfaces irb unit {{ vni.vlan_id }} family inet address {{ vni.l3.address }}
+delete interfaces irb unit
 {% endfor %}
