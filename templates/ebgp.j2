@@ -21,6 +21,9 @@ set protocols bgp group {{ ebgp_group.name }} neighbor {{ neighbor.peer }} peer-
 {% endfor %}
 
 {#
+set interfaces lo0 unit 0 family inet address 10.0.0.1/32
+
+
 set protocols bgp group OVERLAY type external
 set protocols bgp group OVERLAY multipath multiple-as
 set protocols bgp group OVERLAY local-as <LOCAL_AS_NUMBER>
