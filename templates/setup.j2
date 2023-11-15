@@ -1,4 +1,3 @@
 {% for lo_interface in lo_interfaces|dict2items %}
 set interfaces {{ lo_interface.key }} unit {{ lo_interface.value.unit }} family inet address {{ lo_interface.value.address }}/32
 {% endfor %}
-set routing-option router-id {{ router_id }}
