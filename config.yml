@@ -4,25 +4,24 @@
   vars:
     ansible_command_timeout: 300
   vars_files:
-    - vars/ebgp-overlay.yml
-    - vars/layer2-vni.yml
-    - vars/layer3-vni.yml
+    - vars/ebgp.yml
+    - vars/vni.yml
   tasks:
     - name: Config eBGP Overlay
       junipernetworks.junos.junos_config:
-        src: "templates/ebgp-overlay.j2"
+        src: "templates/ebgp.j2"
         confirm_commit: yes
         update: merge
         comment: Config eBGP Overlay
     - name: Config Layer 3 VNIs
       junipernetworks.junos.junos_config:
-        src: "templates/layer3-vni.j2"
+        src: "templates/vni-layer3.j2"
         confirm_commit: yes
         update: merge
         comment: Config Layer 3 VNIs
     - name: Config Layer 2 VNIs
       junipernetworks.junos.junos_config:
-        src: "templates/layer2-vni.j2"
+        src: "templates/vni-layer2.j2"
         confirm_commit: yes
         update: merge
         comment: Config Layer 2 VNIs
