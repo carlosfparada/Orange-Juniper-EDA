@@ -1,4 +1,4 @@
-# eBGP Overlay
+# eBGP Overlay definition
 ebgp_groups:
   - name: OVERLAY
     local_asn: 65000

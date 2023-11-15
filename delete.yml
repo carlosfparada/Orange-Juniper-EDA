@@ -4,6 +4,7 @@
   vars:
     ansible_command_timeout: 300
   vars_files:
+    - vars/setup.yml
     - vars/ebgp.yml
     - vars/vni.yml
   tasks:

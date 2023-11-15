@@ -1,11 +1,4 @@
-# Loopback interfaces
-lo_interfaces:
-  lo0:
-    unit: 0
-    address: 10.0.0.1
-
-router_id: 10.0.0.1
-
+# VNI's definition
 vnis:
   - name: VNI1
     vni_id: 10100
