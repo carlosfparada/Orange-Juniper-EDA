@@ -1,10 +1,5 @@
 {% for vni in vnis %}
 set routing-instances {{ vni.l2.name }} vtep-source-interface {{ vni.lo_interface }}.0
-set routing-instances {{ vni.l2.name }} instance-type mac-vrf
-set routing-instances {{ vni.l2.name }} service-type vlan-based
-set routing-instances {{ vni.l2.name }} route-distinguisher {{ lo_interfaces[vni.lo_interface].address }}:{{ vni.vlan_id }}
-set routing-instances {{ vni.l2.name }} vrf-target target:{{ vni.asn }}:{{ vni.vni_id }}
-
 {% endfor %}
 
 {#
