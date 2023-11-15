@@ -1,7 +1,7 @@
-{% for l2_vni in l2_vnis %}
+{% for l3_vni in l3_vnis %}
 set routing-instances {{ l3_vni.name }} instance-type vrf
 set routing-instances {{ l3_vni.name }} interface irb.{{ l3_vni.vlan_id }}
-set routing-instances {{ l3_vni.name }} route-distinguisher {{ lo_interfaces[l2_vni.lo_interface].address }}:{{ l2_vni.vni_id }}
+set routing-instances {{ l3_vni.name }} route-distinguisher {{ lo_interfaces[l3_vni.lo_interface].address }}:{{ l3_vni.vni_id }}
 set routing-instances {{ l3_vni.name }} vrf-import {{ l3_vni.import }}
 set routing-instances {{ l3_vni.name }} vrf-export {{ l3_vni.import }}
 set routing-instances {{ l3_vni.name }} vrf-table-label
