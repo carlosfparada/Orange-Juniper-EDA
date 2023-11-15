@@ -1,3 +1,4 @@
+set routing-option router-id {{ router_id }}
 {% for vni in vnis %}
 set policy-options community {{ vni.community }} members target:{{ vni.asn }}:{{ vni.vlan_id }}
 set policy-options policy-statement {{ vni.l3.import }} term {{ vni.term }} from community {{ vni.community }}
