@@ -4,6 +4,7 @@ set policy-options policy-statement {{ vni.l2.import }} term {{ vni.term }} from
 set policy-options policy-statement {{ vni.l2.import }} term {{ vni.term }} then accept
 set routing-instances {{ vni.l2.name }} vtep-source-interface {{ vni.lo_interface }}.0
 set routing-instances {{ vni.l2.name }} instance-type virtual-switch
+set routing-instances {{ vni.l2.name }} route-distinguisher {{ lo_interfaces[vni.lo_interface].address }}:{{ vni.vni_id }}
 set routing-instances {{ vni.l2.name }} vrf-import {{ vni.l2.import }}
 set routing-instances {{ vni.l2.name }} vrf-target target:{{ vni.asn }}:{{ vni.vni_id }}
 set routing-instances {{ vni.l2.name }} protocols evpn encapsulation vxlan
