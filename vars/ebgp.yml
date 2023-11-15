@@ -1,4 +1,4 @@
-# Local interface
+# Loopback interfaces
 lo_interfaces:
   lo0:
     unit: 0
