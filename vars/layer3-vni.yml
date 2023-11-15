@@ -1,7 +1,7 @@
 # Layer 2 VNI
 l3_vnis:
   - name: L3-VNI1
-    vlan-id: 101
+    vlan_id: 101
     vni_id: 101
     unit: 0
     address: 10.1.1.1
