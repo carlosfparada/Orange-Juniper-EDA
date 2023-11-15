@@ -1,6 +1,3 @@
-{% for lo_interface in lo_interfaces|dict2items %}
-delete interfaces {{ lo_interface.key }}
-{% endfor %}
 {% for ebgp_group in ebgp_groups %}
 delete security authentication-key-chains key-chain {{ ebgp_group.key_chain_name }}
 delete protocols bgp group {{ ebgp_group.name }}
