@@ -4,6 +4,7 @@ set policy-options policy-statement {{ l2_vni.import }} term {{ l2_vni.term }} f
 set policy-options policy-statement {{ l2_vni.import }} term {{ l2_vni.term }} then accept
 set routing-instances {{ l2_vni.name }} vtep-source-interface {{ l2_vni.lo_interface }}.0
 set routing-instances {{ l2_vni.name }} instance-type virtual-switch
+set routing-instances {{ l2_vni.name }} routing-options router-id {{ lo_interfaces[l2_vni.lo_interface].address }}
 set routing-instances {{ l2_vni.name }} route-distinguisher {{ lo_interfaces[l2_vni.lo_interface].address }}:{{ l2_vni.vni_id }}
 set routing-instances {{ l2_vni.name }} vrf-import {{ l2_vni.import }}
 set routing-instances {{ l2_vni.name }} vrf-target target:{{ l2_vni.asn }}:{{ l2_vni.vni_id }}
