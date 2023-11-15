@@ -9,7 +9,7 @@ delete routing-instances {{ vni.l3.name }} route-distinguisher {{ lo_interfaces[
 delete routing-instances {{ vni.l3.name }} vrf-import {{ vni.l3.import }}
 delete routing-instances {{ vni.l3.name }} vrf-export {{ vni.l3.import }}
 delete routing-instances {{ vni.l3.name }} vrf-table-label
-delete interfaces irb unit {{ vni.l3.vlan_id }} family inet address {{ vni.l3.vlan_id }}
+delete interfaces irb unit {{ vni.vlan_id }} family inet address {{ vni.vlan_id }}
 {% endfor %}
 
 
