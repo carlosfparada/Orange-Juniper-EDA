@@ -7,12 +7,12 @@
     - vars/ebgp.yml
     - vars/vni.yml
   tasks:
-    # - name: Config eBGP Overlay
-    #   junipernetworks.junos.junos_config:
-    #     src: "templates/ebgp.j2"
-    #     confirm_commit: yes
-    #     update: merge
-    #     comment: Config eBGP Overlay
+    - name: Config eBGP Overlay
+      junipernetworks.junos.junos_config:
+        src: "templates/ebgp.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Config eBGP Overlay
     - name: Config Layer 3 VNIs
       junipernetworks.junos.junos_config:
         src: "templates/vni-layer3.j2"
