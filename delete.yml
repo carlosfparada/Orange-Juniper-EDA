@@ -7,6 +7,12 @@
     - vars/ebgp.yml
     - vars/vni.yml
   tasks:
+    - name: Router setup (not automation needed in PoC)
+      junipernetworks.junos.junos_config:
+        src: "templates/setup-delete.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Router setup
     - name: Delete eBGP Overlay
       junipernetworks.junos.junos_config:
         src: "templates/ebgp-overlay-delete.j2"

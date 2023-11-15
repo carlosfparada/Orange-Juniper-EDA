@@ -12,7 +12,7 @@
         src: "templates/setup.j2"
         confirm_commit: yes
         update: merge
-        comment: Config Layer 3 VNIs
+        comment: Router setup
     # - name: Config eBGP Overlay
     #   junipernetworks.junos.junos_config:
     #     src: "templates/ebgp.j2"
