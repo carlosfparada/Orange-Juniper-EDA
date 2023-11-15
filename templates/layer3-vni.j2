@@ -1,4 +1,5 @@
 {% for l3_vni in l3_vnis %}
+set policy-options community {{ l3_vni.vlan_id }} members target:{{ l3_vni.asn }}:{{ l3_vni.vlan_id }}
 set policy-options policy-statement {{ l3_vni.import }} term {{ l3_vni.term }} from community {{ l3_vni.community }}
 set policy-options policy-statement {{ l3_vni.import }} term {{ l3_vni.term }} then accept
 set policy-options policy-statement {{ l3_vni.import }} term {{ l3_vni.term }} then accept
