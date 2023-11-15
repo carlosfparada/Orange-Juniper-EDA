@@ -19,3 +19,4 @@ vnis:
       unit: 0
       community: community1
       import: IMPORT-L3-VNI1
+      export: EXPORT-L3-VNI1
