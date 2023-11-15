@@ -5,6 +5,7 @@
     ansible_command_timeout: 300
   vars_files:
     - vars/ebgp.yml
+    - vars/vni.yml
   tasks:
     - name: Delete eBGP Overlay
       junipernetworks.junos.junos_config:
