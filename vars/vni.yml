@@ -17,6 +17,5 @@ vnis:
       import: IMPORT-L2-VNI1
     l3:
       name: L3-VNI1
-      unit: 0
       import: IMPORT-L3-VNI1
       export: EXPORT-L3-VNI1
