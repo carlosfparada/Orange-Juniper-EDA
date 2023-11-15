@@ -8,10 +8,10 @@ set routing-instances {{ l2_vni.name }} protocols evpn encapsulation vxlan
 set routing-instances {{ l2_vni.name }} protocols evpn extended-vni-list {{ l2_vni.vni_id }}
 set routing-instances {{ l2_vni.name }} protocols evpn vni-options vni {{ l2_vni.vni_id }} vrf-target export target:{{ l2_vni.asn }}:{{ l2_vni.vni_id }}
 set routing-instances {{ l2_vni.name }} protocols evpn multicast-mode ingress-replication
-set routing-instances {{ l2_vni.name }} bridge-domains bd-{{ l2_vni.vlan_id }} vlan-id {{ l2_vni.vlan_id }}
-set routing-instances {{ l2_vni.name }} bridge-domains bd-{{ l2_vni.vlan_id }} routing-interface irb.{{ l2_vni.vlan_id }}
-set routing-instances {{ l2_vni.name }} bridge-domains bd-{{ l2_vni.vlan_id }} vxlan vni {{ l2_vni.vlan_id }}
-set routing-instances {{ l2_vni.name }} bridge-domains bd-{{ l2_vni.vlan_id }} vxlan ingress-node-replication
+set routing-instances {{ l2_vni.name }} bridge-domains bd-{{ l2_vni.bd }} vlan-id {{ l2_vni.vlan_id }}
+set routing-instances {{ l2_vni.name }} bridge-domains bd-{{ l2_vni.bd }} routing-interface irb.{{ l2_vni.vlan_id }}
+set routing-instances {{ l2_vni.name }} bridge-domains bd-{{ l2_vni.bd }} vxlan vni {{ l2_vni.vlan_id }}
+set routing-instances {{ l2_vni.name }} bridge-domains bd-{{ l2_vni.bd }} vxlan ingress-node-replication
 
 set policy-options policy-statement {{ l2_vni.import }} term {{ l2_vni.term }} from community {{ l2_vni.name }}
 set policy-options policy-statement {{ l2_vni.import }} term {{ l2_vni.term }} then accept

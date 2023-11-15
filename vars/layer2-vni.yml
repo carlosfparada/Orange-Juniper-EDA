@@ -7,5 +7,6 @@ l2_vnis:
     import: IMPORT-L2-VNI1
     asn: 65000
     lo_interface: lo0
+    bd: 101
 
 
