@@ -9,8 +9,8 @@ vnis:
     vni_id: 101
     vlan_id: 101
     term: A
-    lo_interface: lo0
     asn: 65000
+    lo_interface: lo0
     community: community1
     l2:
       name: L2-VNI1
