@@ -3,8 +3,6 @@
   gather_facts: no
   vars:
     ansible_command_timeout: 300
-  vars_files:
-  - vars/main.yml
   tasks:
   - name: Gather Facts
     junipernetworks.junos.junos_facts:
