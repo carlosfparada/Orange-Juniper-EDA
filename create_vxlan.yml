@@ -10,25 +10,25 @@
   tasks:
     # - name: Router setup (not automation needed in PoC)
     #   junipernetworks.junos.junos_config:
-    #     src: "templates/setup.j2"
+    #     src: "templates/setup-mx.j2"
     #     confirm_commit: yes
     #     update: merge
     #     comment: Router setup
     # - name: Config eBGP Overlay
     #   junipernetworks.junos.junos_config:
-    #     src: "templates/ebgp.j2"
+    #     src: "templates/ebgp-mx.j2"
     #     confirm_commit: yes
     #     update: merge
     #     comment: Config eBGP Overlay
     - name: Config Layer 2 VNIs
       junipernetworks.junos.junos_config:
-        src: "templates/vni-layer2.j2"
+        src: "templates/vni-layer2-mx.j2"
         confirm_commit: yes
         update: merge
         comment: Config Layer 2 VNIs
     - name: Config Layer 3 VNIs
       junipernetworks.junos.junos_config:
-        src: "templates/vni-layer3.j2"
+        src: "templates/vni-layer3-mx.j2"
         confirm_commit: yes
         update: merge
         comment: Config Layer 3 VNIs
