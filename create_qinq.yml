@@ -5,7 +5,7 @@
     ansible_command_timeout: 300
   vars_files:
     - vars/setup.yml
-    - vars/vni-qiniq.yml
+    - vars/vni-qinq.yml
   tasks:
     - name: Config VNI on MX
       junipernetworks.junos.junos_config:
