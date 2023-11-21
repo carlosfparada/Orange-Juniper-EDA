@@ -2,10 +2,6 @@
 set interfaces {{ vni.iface_mx_qfx }} description MX2QFX_{{ vni.iface_mx_qfx }}
 set interfaces {{ vni.iface_mx_qfx }} flexible-vlan-tagging
 set interfaces {{ vni.iface_mx_qfx }} encapsulation flexible-ethernet-services
-set interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} encapsulation vlan-bridge
-set interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} vlan-tags outer {{ vni.s_vlan }}
-set interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} input-vlan-map pop
-set interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} output-vlan-map push
 {% endfor %}
 
 
