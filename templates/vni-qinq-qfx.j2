@@ -10,7 +10,7 @@ set interfaces {{ vni.iface_qfx_mx }} mtu 9216
 set interfaces {{ vni.iface_qfx_mx }} flexible-vlan-tagging
 set interfaces {{ vni.iface_qfx_mx }} encapsulation flexible-ethernet-services
 set interfaces {{ vni.iface_qfx_mx }} unit {{ vni.s_vlan }} encapsulation vlan-bridge
-set interfaces <{{ vni.iface_qfx_mx }} unit {{ vni.s_vlan }} vlan-id {{ vni.s_vlan }}
+set interfaces {{ vni.iface_qfx_mx }} unit {{ vni.s_vlan }} vlan-id {{ vni.s_vlan }}
 {% endfor %}
 
 
