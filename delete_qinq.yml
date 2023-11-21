@@ -23,7 +23,7 @@
     ansible_command_timeout: 300
   vars_files:
     - vars/setup.yml
-    - vars/vni-qinq-delete-qfx.yml
+    - vars/vni-qinq.yml
   tasks:
     - name: Delete QFX-10000 QinQ
       junipernetworks.junos.junos_config:
