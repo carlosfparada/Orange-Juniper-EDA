@@ -7,12 +7,12 @@
     - vars/setup.yml
     - vars/vni-qinq.yml
   tasks:
-    - name: Config VNI on MX
-      junipernetworks.junos.junos_config:
-        src: "templates/vni-qinq-mx.j2"
-        confirm_commit: yes
-        update: merge
-        comment: Config VNI on MX
+    # - name: Config VNI on MX
+    #   junipernetworks.junos.junos_config:
+    #     src: "templates/vni-qinq-mx.j2"
+    #     confirm_commit: yes
+    #     update: merge
+    #     comment: Config VNI on MX
 
 - name: Config Juniper QFX-10000
   hosts: qfx-series
