@@ -16,7 +16,6 @@
         update: merge
         comment: Delete MX-480 QinQ
 
-
 - name: Delete Juniper QFX-10000 QinQ
   hosts: qfx-series
   gather_facts: no
