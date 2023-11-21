@@ -1,4 +1,4 @@
-- name: Config Juniper MX-480
+- name: Config Juniper MX-480 VXLAN
   hosts: mx-series
   gather_facts: no
   vars:

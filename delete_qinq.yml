@@ -1,18 +1,34 @@
-- name: Delete Juniper MX-480
+---
+
+- name: Delete Juniper MX-480 QinQ
   hosts: mx-series
   gather_facts: no
   vars:
     ansible_command_timeout: 300
   vars_files:
     - vars/setup.yml
-    - vars/ebgp.yml
     - vars/vni-qinq.yml
   tasks:
-    - name: Delete Layer 2 VNIs
+    - name: Delete MX-480 QinQ
       junipernetworks.junos.junos_config:
-        src: "templates/vni-layer2-delete-mx.j2"
+        src: "templates/vni-qinq-delete-mx.j2"
         confirm_commit: yes
         update: merge
-        comment: Delete Layer 2 VNIs     
+        comment: Delete MX-480 QinQ
 
-   
+
+- name: Delete Juniper QFX-10000 QinQ
+  hosts: qfx-series
+  gather_facts: no
+  vars:
+    ansible_command_timeout: 300
+  vars_files:
+    - vars/setup.yml
+    - vars/vni-qinq-delete-qfx.yml
+  tasks:
+    - name: Delete QFX-10000 QinQ
+      junipernetworks.junos.junos_config:
+        src: "templates/vni-qinq-delete-qfx.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Delete QFX-10000 QinQ
