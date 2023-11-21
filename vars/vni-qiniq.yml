@@ -1,0 +1,17 @@
+# VNI's definition on MX
+vnis:
+  mx:
+    - name: VNI1
+      description: VNI1 Description
+      iface_to_qfx: 
+      s_vlan: 1001
+      lo_interface: lo0
+      address: 10.1.1.1
+      asn: 65000
+      vlan_id: 1001 # vlan-id??
+  qfx:
+    - name: VNI1
+      description: VNI1 Description
+      iface_to_mx: 
+      iface_to_comp: 
+      s_vlan: 1001
