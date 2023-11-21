@@ -1,6 +1,5 @@
 {% for vni in vnis %}
-set interfaces {{ vni.iface_mx_qfx }} description {{ vni.description }}
-set interfaces {{ vni.iface_mx_qfx }} mtu 9216
+set interfaces {{ vni.iface_mx_qfx }} description MX2QFX_{{ vni.iface_mx_qfx }}
 set interfaces {{ vni.iface_mx_qfx }} flexible-vlan-tagging
 set interfaces {{ vni.iface_mx_qfx }} encapsulation flexible-ethernet-services
 set interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} encapsulation vlan-bridge
