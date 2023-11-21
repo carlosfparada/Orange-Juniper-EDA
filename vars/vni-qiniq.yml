@@ -1,4 +1,4 @@
-# VNI's definition on MX
+# VNI's definition for QinQ
 vnis:
   - name: VNI1
     iface_mx_qfx: 

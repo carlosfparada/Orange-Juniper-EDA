@@ -1,4 +1,4 @@
-# VNI's definition
+# VNI's definition for VXLAN
 vnis:
   - name: VNI1
     vni_id: 10100
