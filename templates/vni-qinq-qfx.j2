@@ -1,0 +1,19 @@
+
+
+
+{#
+set interfaces <IF_NAME_TO_COMP> description <IF_DESCRIPTION>
+set interfaces <IF_NAME_TO_COMP> mtu 9216
+set interfaces <IF_NAME_TO_COMP> flexible-vlan-tagging
+set interfaces <IF_NAME_TO_COMP> encapsulation flexible-ethernet-services
+set interfaces <IF_NAME_TO_COMP> unit <S-VLAN> encapsulation vlan-bridge
+set interfaces <IF_NAME_TO_COMP> unit <S-VLAN> vlan-id <S-VLAN>
+
+
+set interfaces <IF_NAME_TO_MX> description <IF_DESCRIPTION>
+set interfaces <IF_NAME_TO_MX> mtu 9216
+set interfaces <IF_NAME_TO_MX> flexible-vlan-tagging
+set interfaces <IF_NAME_TO_MX> encapsulation flexible-ethernet-services
+set interfaces <IF_NAME_TO_MX> unit <S-VLAN> encapsulation vlan-bridge
+set interfaces <IF_NAME_TO_MX> unit <S-VLAN> vlan-id <S-VLAN>
+#}
