@@ -1,4 +1,4 @@
-- name: Config Juniper MX-480 and QFX-10000
+- name: Config Juniper MX-480
   hosts: mx-series
   gather_facts: no
   vars:
@@ -7,50 +7,25 @@
     - vars/setup.yml
     - vars/vni-qiniq.yml
   tasks:
-    - name: Config Layer 2 VNIs
+    - name: Config VNI on MX
       junipernetworks.junos.junos_config:
-        src: "templates/vni-layer2-mx.j2"
+        src: "templates/vni-qinq-mx.j2"
         confirm_commit: yes
         update: merge
-        comment: Config Layer 2 VNIs
-    - name: Config Layer 3 VNIs
-      junipernetworks.junos.junos_config:
-        src: "templates/vni-layer3-mx.j2"
-        confirm_commit: yes
-        update: merge
-        comment: Config Layer 3 VNIs
+        comment: Config VNI on MX
 
-- name: Config Juniper MX-480 and QFX-10000
-  hosts: mx-series
+- name: Config Juniper QFX-10000
+  hosts: qfx-series
   gather_facts: no
   vars:
     ansible_command_timeout: 300
   vars_files:
     - vars/setup.yml
-    - vars/ebgp.yml
-    - vars/vni.yml
+    - vars/vni-qinq.yml
   tasks:
-    # - name: Router setup (not automation needed in PoC)
-    #   junipernetworks.junos.junos_config:
-    #     src: "templates/setup-mx.j2"
-    #     confirm_commit: yes
-    #     update: merge
-    #     comment: Router setup
-    # - name: Config eBGP Overlay
-    #   junipernetworks.junos.junos_config:
-    #     src: "templates/ebgp-mx.j2"
-    #     confirm_commit: yes
-    #     update: merge
-    #     comment: Config eBGP Overlay
-    - name: Config Layer 2 VNIs
+    - name: Config VNI on QFX
       junipernetworks.junos.junos_config:
-        src: "templates/vni-layer2-mx.j2"
+        src: "templates/vni-qinq-qfx.j2"
         confirm_commit: yes
         update: merge
-        comment: Config Layer 2 VNIs
-    - name: Config Layer 3 VNIs
-      junipernetworks.junos.junos_config:
-        src: "templates/vni-layer3-mx.j2"
-        confirm_commit: yes
-        update: merge
-        comment: Config Layer 3 VNIs
+        comment: Config VNI on QFX

@@ -1,23 +1,20 @@
 {% for vni in vnis %}
-set interfaces <IF-NAME-TO-QFX> description <IF_DESCRIPTION>
-set interfaces <IF-NAME-TO-QFX> mtu 9216
-set interfaces <IF-NAME-TO-QFX> flexible-vlan-tagging
-set interfaces <IF-NAME-TO-QFX> encapsulation flexible-ethernet-services
-set interfaces <IF-NAME-TO-QFX> unit <S-VLAN> encapsulation vlan-bridge
-set interfaces <IF-NAME-TO-QFX> unit <S-VLAN> vlan-tags outer <S-VLAN>
-set interfaces <IF-NAME-TO-QFX> unit <S-VLAN> input-vlan-map pop
-set interfaces <IF-NAME-TO-QFX> unit <S-VLAN> output-vlan-map push
-
-set bridge-domains bd-<S-VLANS> vlan-id <S-VLAN>
-set bridge-domains bd-<S-VLANS> routing-interface irb.<S-VLAN>
-
-set interfaces irb unit <S-VLAN> family inet address <IPv4-ADDRESS>
-
-set routing-instances <RI-NAME> instance-type vrf
-set routing-instances <RI-NAME> interface irb.<S-VLAN>
-set routing-instances <RI-NAME> route-distinguisher <LO0>:<VPN-ID>
-set routing-instances <RI-NAME> vrf-target target:<AS-NUMBER>:<VPN-ID>
-set routing-instances <RI-NAME> vrf-table-label
+set interfaces {{ vni.iface_mx_qfx }} description {{ vni.description }}
+set interfaces {{ vni.iface_mx_qfx }} mtu 9216
+set interfaces {{ vni.iface_mx_qfx }} flexible-vlan-tagging
+set interfaces {{ vni.iface_mx_qfx }} encapsulation flexible-ethernet-services
+set interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} encapsulation vlan-bridge
+set interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} vlan-tags outer {{ vni.s_vlan }}
+set interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} input-vlan-map pop
+set interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} output-vlan-map push
+set bridge-domains bd-{{ vni.s_vlan }} vlan-id {{ vni.s_vlan }}
+set bridge-domains bd-{{ vni.s_vlan }} routing-interface irb.{{ vni.s_vlan }}
+set interfaces irb unit {{ vni.s_vlan }} family inet address {{ vni.address }}
+set routing-instances {{ vni.ri_name }} instance-type vrf
+set routing-instances {{ vni.ri_name }} interface irb.{{ vni.s_vlan }}
+set routing-instances {{ vni.ri_name }} route-distinguisher {{ lo_interfaces[vni.lo_interface].address }}:{{ vni.vpn_id }}
+set routing-instances {{ vni.ri_name }} vrf-target target:{{ vni.asn }}:{{ vni.vpn_id }}
+set routing-instances {{ vni.ri_name }} vrf-table-label
 {% endfor %}
 
 
