@@ -1,0 +1,18 @@
+- name: Delete Juniper MX-480
+  hosts: mx-series
+  gather_facts: no
+  vars:
+    ansible_command_timeout: 300
+  vars_files:
+    - vars/setup.yml
+    - vars/ebgp.yml
+    - vars/vni-qinq.yml
+  tasks:
+    - name: Delete Layer 2 VNIs
+      junipernetworks.junos.junos_config:
+        src: "templates/vni-layer2-delete-mx.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Delete Layer 2 VNIs     
+
+   

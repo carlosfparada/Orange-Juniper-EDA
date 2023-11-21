@@ -6,7 +6,7 @@
   vars_files:
     - vars/setup.yml
     - vars/ebgp.yml
-    - vars/vni.yml
+    - vars/vni-vxlan.yml
   tasks:
     # - name: Delete Router setup (not automation needed in PoC, can break stuff)
     #   junipernetworks.junos.junos_config:

@@ -1,4 +1,26 @@
-- name: Config Juniper MX-480
+- name: Config Juniper MX-480 and QFX-10000
+  hosts: mx-series
+  gather_facts: no
+  vars:
+    ansible_command_timeout: 300
+  vars_files:
+    - vars/setup.yml
+    - vars/vni-qiniq.yml
+  tasks:
+    - name: Config Layer 2 VNIs
+      junipernetworks.junos.junos_config:
+        src: "templates/vni-layer2-mx.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Config Layer 2 VNIs
+    - name: Config Layer 3 VNIs
+      junipernetworks.junos.junos_config:
+        src: "templates/vni-layer3-mx.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Config Layer 3 VNIs
+
+- name: Config Juniper MX-480 and QFX-10000
   hosts: mx-series
   gather_facts: no
   vars:
@@ -6,7 +28,7 @@
   vars_files:
     - vars/setup.yml
     - vars/ebgp.yml
-    - vars/vni-vxlan.yml
+    - vars/vni.yml
   tasks:
     # - name: Router setup (not automation needed in PoC)
     #   junipernetworks.junos.junos_config:
