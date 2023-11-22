@@ -1,16 +1,18 @@
 {% for vni in vnis %}
 set interfaces {{ vni.iface_qfx_comp }} description QFX2COMP_{{ vni.iface_qfx_comp }}
-set interfaces {{ vni.iface_qfx_comp }} mtu 9216
 set interfaces {{ vni.iface_qfx_comp }} flexible-vlan-tagging
+set interfaces {{ vni.iface_qfx_comp }} mtu 9216
 set interfaces {{ vni.iface_qfx_comp }} encapsulation flexible-ethernet-services
-set interfaces {{ vni.iface_qfx_comp }} unit {{ vni.s_vlan }} encapsulation vlan-bridge
-set interfaces {{ vni.iface_qfx_comp }} unit {{ vni.s_vlan }} vlan-id {{ vni.s_vlan }}
+set interfaces {{ vni.iface_qfx_comp }} unit {{ vni.c_vlan }} encapsulation vlan-bridge
+set interfaces {{ vni.iface_qfx_comp }} unit {{ vni.c_vlan }} vlan-id {{ vni.c_vlan_name }}
 set interfaces {{ vni.iface_qfx_mx }} description QFX2MX_{{ vni.iface_qfx_mx }}
-set interfaces {{ vni.iface_qfx_mx }} mtu 9216
 set interfaces {{ vni.iface_qfx_mx }} flexible-vlan-tagging
+set interfaces {{ vni.iface_qfx_mx }} mtu 9216
 set interfaces {{ vni.iface_qfx_mx }} encapsulation flexible-ethernet-services
-set interfaces {{ vni.iface_qfx_mx }} unit {{ vni.s_vlan }} encapsulation vlan-bridge
-set interfaces {{ vni.iface_qfx_mx }} unit {{ vni.s_vlan }} vlan-id {{ vni.s_vlan }}
+set interfaces {{ vni.iface_qfx_mx }} unit {{ vni.c_vlan }} family ethernet-switching interface-mode trunk
+set interfaces {{ vni.iface_qfx_mx }} unit {{ vni.c_vlan }} family ethernet-switching vlan members {{ vni.c_vlan_name }}
+set vlans {{ vni.c_vlan_name }} QFXVLAN_{{ vni.c_vlan_name }}
+set vlans {{ vni.c_vlan_name }} vlan-id {{ vni.c_vlan }}
 {% endfor %}
 
 

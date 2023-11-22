@@ -4,9 +4,10 @@ vnis:
     iface_mx_qfx: ge-0/0/1
     iface_qfx_mx: xe-0/0/1
     iface_qfx_comp: xe-0/0/2
-    s_vlan: 1001
-    lo_interface: lo0
+    c_vlan_name: CVLAN1
+    c_vlan: 1001
     address: 10.1.1.1
+    lo_interface: lo0
     asn: 65000
     vpn_id: 1001 # vlan-id??
     ri_name: RI1
