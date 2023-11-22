@@ -26,7 +26,7 @@
         confirm_commit: yes
         update: merge
         comment: Config Layer 2 VNIs VXLAN
-    - name: Config Layer 3 VNIs
+    - name: Config Layer 3 VNIs VXLAN
       junipernetworks.junos.junos_config:
         src: "templates/vni-layer3-mx.j2"
         confirm_commit: yes
