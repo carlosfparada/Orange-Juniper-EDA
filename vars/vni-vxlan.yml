@@ -7,12 +7,10 @@ vnis:
     asn: 65000
     lo_interface: lo0
     community: community1
-    l2:
-      name: L2-VNI1
-      import: IMPORT-L2-VNI1
-      ovs_lo_address: 10.2.2.2
-    l3:
-      name: L3-VNI1
-      address: 10.1.1.1
-      import: IMPORT-L3-VNI1
-      export: EXPORT-L3-VNI1
+    l2_name: L2-VNI1
+    l2_import: IMPORT-L2-VNI1
+    l2_ovs_lo_address: 10.2.2.2
+    l3_name: L3-VNI1
+    l3_address: 10.1.1.1
+    l3_import: IMPORT-L3-VNI1
+    l3_export: EXPORT-L3-VNI1
