@@ -1,0 +1,31 @@
+- name: Config Juniper MX-480 Simple VLAN
+  hosts: mx-series
+  gather_facts: no
+  vars:
+    ansible_command_timeout: 300
+  vars_files:
+    - vars/setup.yml
+    - vars/vni-vlan.yml
+  tasks:
+    - name: Config VNI on MX
+      junipernetworks.junos.junos_config:
+        src: "templates/vni-vlan-mx.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Config VNI on MX Simple VLAN
+
+- name: Config Juniper QFX-10000 Simple VLAN
+  hosts: qfx-series
+  gather_facts: no
+  vars:
+    ansible_command_timeout: 300
+  vars_files:
+    - vars/setup.yml
+    - vars/vni-vlan.yml
+  tasks:
+    - name: Config VNI on QFX Simple VLAN
+      junipernetworks.junos.junos_config:
+        src: "templates/vni-vlan-qfx.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Config VNI on QFX Simple VLAN

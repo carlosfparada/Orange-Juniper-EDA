@@ -20,15 +20,15 @@
     #     confirm_commit: yes
     #     update: merge
     #     comment: Config eBGP Overlay
-    - name: Config Layer 2 VNIs
+    - name: Config Layer 2 VNIs VXLAN
       junipernetworks.junos.junos_config:
         src: "templates/vni-layer2-mx.j2"
         confirm_commit: yes
         update: merge
-        comment: Config Layer 2 VNIs
+        comment: Config Layer 2 VNIs VXLAN
     - name: Config Layer 3 VNIs
       junipernetworks.junos.junos_config:
         src: "templates/vni-layer3-mx.j2"
         confirm_commit: yes
         update: merge
-        comment: Config Layer 3 VNIs
+        comment: Config Layer 3 VNIs VXLAN

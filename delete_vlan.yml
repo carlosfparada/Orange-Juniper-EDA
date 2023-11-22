@@ -1,0 +1,33 @@
+---
+
+- name: Delete Juniper MX-480 Simple VLAN
+  hosts: mx-series
+  gather_facts: no
+  vars:
+    ansible_command_timeout: 300
+  vars_files:
+    - vars/setup.yml
+    - vars/vni-vlan.yml
+  tasks:
+    - name: Delete MX-480 Simple VLAN
+      junipernetworks.junos.junos_config:
+        src: "templates/vni-vlan-delete-mx.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Delete MX-480 Simple VLAN
+
+- name: Delete Juniper QFX-10000 Simple VLAN
+  hosts: qfx-series
+  gather_facts: no
+  vars:
+    ansible_command_timeout: 300
+  vars_files:
+    - vars/setup.yml
+    - vars/vni-vlan.yml
+  tasks:
+    - name: Delete QFX-10000 Simple VLAN
+      junipernetworks.junos.junos_config:
+        src: "templates/vni-vlan-delete-qfx.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Delete QFX-10000 Simple VLAN
