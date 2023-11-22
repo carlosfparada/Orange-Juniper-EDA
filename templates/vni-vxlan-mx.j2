@@ -26,36 +26,35 @@ set policy-options policy-statement {{ vni.l3_export }} term {{ vni.term }} then
 set interfaces irb unit {{ vni.vlan_id }} family inet address {{ vni.l3_address }}
 {% endfor %}
 
+
 {#
-set routing-instances <VNI1-L2> vtep-source-interface lo0.0
-set routing-instances <VNI1-L2> instance-type virtual-switch
-set routing-instances <VNI1-L2> route-distinguisher <LO0-ADDRESS>:<ID-VNI-1>
-set routing-instances <VNI1-L2> vrf-import <VNI1-L2-IMPORT>
-set routing-instances <VNI1-L2> vrf-target target:<AS-NUMBER>:<ID-VNI-1>
-set routing-instances <VNI1-L2> protocols evpn encapsulation vxlan
-set routing-instances <VNI1-L2> protocols evpn extended-vni-list <ID-VNI-1>
-set routing-instances <VNI1-L2> protocols evpn vni-options vni <ID-VNI-1> vrf-target export target:<AS-NUMBER>:<ID-VNI-1>
-set routing-instances <VNI1-L2> protocols evpn multicast-mode ingress-replication
-set routing-instances <VNI1-L2> bridge-domains bd-<VNI1> vlan-id <VNI-1>
-set routing-instances <VNI1-L2> bridge-domains bd-<VNI1> routing-interface irb.<VNI-1>
-set routing-instances <VNI1-L2> bridge-domains bd-<VNI1> vxlan vni <VNI-1>
-set routing-instances <VNI1-L2> bridge-domains bd-<VNI1> vxlan ingress-node-replication
+set routing-instances <L2_RI_NAME> instance-type mac-vrf
+set routing-instances <L2_RI_NAME> protocols evpn encapsulation vxlan
+set routing-instances <L2_RI_NAME> protocols evpn default-gateway do-not-advertise
+set routing-instances <L2_RI_NAME> protocols evpn extended-vni-list <VNI_ID>
+set routing-instances <L2_RI_NAME> vtep-source-interface lo0.0
+set routing-instances <L2_RI_NAME> remote-vtep-list <OVS_LO0_ADDRESS>
+set routing-instances <L2_RI_NAME> bridge-domains bd-<VLAN_ID> vlan-id <VLAN_ID>
+set routing-instances <L2_RI_NAME> bridge-domains bd-<VLAN_ID> routing-interface irb.<VLAN_ID>
+set routing-instances <L2_RI_NAME> bridge-domains bd-<VLAN_ID> vxlan vni <VNI_ID>
+set routing-instances <L2_RI_NAME> bridge-domains bd-<VLAN_ID> vxlan static-remote-vtep-list <OVS_LO0_ADDRESS>
+set routing-instances <L2_RI_NAME> service-type vlan-based
+set routing-instances <L2_RI_NAME> route-distinguisher <LO0.0_ADDRESS>:<VLAN_ID>
+set routing-instances <L2_RI_NAME> vrf-target target:<LOCAL_AS_NUMBER>:<VNI_ID>
 
-set policy-options policy-statement <VNI1-L2-IMPORT> term A from community <VNI-1>
-set policy-options policy-statement <VNI1-L2-IMPORT> term A then accept
-set policy-options community <VNI-1> members target:<AS-NUMBER>:<VNI-1>
-#}
 
-{# new
-set routing-instances L2-VNI vtep-source-interface lo0.0
-set routing-instances L2-VNI instance-type mac-vrf
-set routing-instances L2-VNI service-type vlan-based
-set routing-instances L2-VNI route-distinguisher 10.0.0.1:101
-set routing-instances L2-VNI vrf-target target:65000:101
-set routing-instances L2-VNI protocols evpn encapsulation vxlan
-set routing-instances L2-VNI protocols evpn default-gateway do-not-advertise
-set routing-instances L2-VNI protocols evpn extended-vni-list 101
-set routing-instances L2-VNI bridge-domains bd-101 vlan-id 101
-set routing-instances L2-VNI bridge-domains bd-101 routing-interface irb.101
-set routing-instances L2-VNI bridge-domains bd-101 vxlan vni 101
+set routing-instances <L3_RI_NAME> instance-type vrf
+set routing-instances <L3_RI_NAME> interface irb.<VLAN_ID>
+set routing-instances <L3_RI_NAME> route-distinguisher <LO0.0_ADDRESS>:<VNI_ID>
+set routing-instances <L3_RI_NAME> vrf-import <L3_RI_NAME_IMPORT>
+set routing-instances <L3_RI_NAME> vrf-export <L3_RI_NAME_EXPORT>
+set routing-instances <L3_RI_NAME> vrf-table-label
+
+set policy-options policy-statement <L3_RI_NAME_EXPORT> term A then community add <COM_VLAN_ID>
+set policy-options policy-statement <L3_RI_NAME_EXPORT> term A then accept
+set policy-options policy-statement <L3_RI_NAME_IMPORT> term A from community <COM_VLAN_ID>
+set policy-options policy-statement <L3_RI_NAME_IMPORT> term A then accept
+set policy-options community <COM_VLAN_ID> members target:<LOCAL_AS_NUMBER>:<VLAN_ID>
+
+set interfaces irb unit <VLAN_ID> family inet address <IP_ADDRESS>
 #}
