@@ -1,0 +1,12 @@
+# VNI's definition for QinQ
+vnis:
+  - name: VNI1
+    iface_mx_qfx: ge-0/0/1
+    iface_qfx_mx: xe-0/0/1
+    iface_qfx_comp: xe-0/0/2
+    s_vlan: 1001
+    lo_interface: lo0
+    address: 10.1.1.1
+    asn: 65000
+    vpn_id: 1001 # vlan-id??
+    ri_name: RI1
