@@ -1,0 +1,8 @@
+{% for vni in vnis %}
+delete routing-instances {{ vni.l2_name }}
+delete policy-options community {{ vni.community }} members target:{{ vni.asn }}:{{ vni.vlan_id }}
+delete policy-options policy-statement {{ vni.l3_import }}
+delete policy-options policy-statement {{ vni.l3_export }}
+delete routing-instances {{ vni.l3_name }}
+delete interfaces irb
+{% endfor %}

@@ -12,6 +12,18 @@ set routing-instances {{ vni.l2_name }} bridge-domains bd-{{ vni.vlan_id }} vxla
 set routing-instances {{ vni.l2_name }} service-type vlan-based
 set routing-instances {{ vni.l2_name }} route-distinguisher {{ lo_interfaces[vni.lo_interface].address }}:{{ vni.vlan_id }}
 set routing-instances {{ vni.l2_name }} vrf-target target:{{ vni.asn }}:{{ vni.vni_id }}
+set routing-instances {{ vni.l3_name }} instance-type vrf
+set routing-instances {{ vni.l3_name }} interface irb.{{ vni.vlan_id }}
+set routing-instances {{ vni.l3_name }} route-distinguisher {{ lo_interfaces[vni.lo_interface].address }}:{{ vni.vni_id }}
+set routing-instances {{ vni.l3_name }} vrf-import {{ vni.l3_import }}
+set routing-instances {{ vni.l3_name }} vrf-export {{ vni.l3_export }}
+set routing-instances {{ vni.l3_name }} vrf-table-label
+set policy-options community {{ vni.community }} members target:{{ vni.asn }}:{{ vni.vlan_id }}
+set policy-options policy-statement {{ vni.l3_import }} term {{ vni.term }} from community {{ vni.community }}
+set policy-options policy-statement {{ vni.l3_import }} term {{ vni.term }} then accept
+set policy-options policy-statement {{ vni.l3_export }} term {{ vni.term }} then community add {{ vni.community }}
+set policy-options policy-statement {{ vni.l3_export }} term {{ vni.term }} then accept
+set interfaces irb unit {{ vni.vlan_id }} family inet address {{ vni.l3_address }}
 {% endfor %}
 
 {#
