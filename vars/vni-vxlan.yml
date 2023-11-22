@@ -10,6 +10,7 @@ vnis:
     l2:
       name: L2-VNI1
       import: IMPORT-L2-VNI1
+      ovs_lo_address: 10.2.2.2
     l3:
       name: L3-VNI1
       address: 10.1.1.1
