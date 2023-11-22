@@ -1,6 +1,4 @@
 {% for vni in vnis %}
 delete interfaces {{ vni.iface_mx_qfx }} description MX2QFX_{{ vni.iface_mx_qfx }}
-delete interfaces {{ vni.iface_mx_qfx }} unit
-delete interfaces {{ vni.iface_mx_qfx }} flexible-vlan-tagging
-delete interfaces {{ vni.iface_mx_qfx }} encapsulation flexible-ethernet-services
+delete interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }}
 {% endfor %}
