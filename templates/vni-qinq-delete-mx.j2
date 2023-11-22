@@ -1,11 +1,8 @@
 {% for vni in vnis %}
 delete interfaces {{ vni.iface_mx_qfx }} description MX2QFX_{{ vni.iface_mx_qfx }}
+delete interfaces {{ vni.iface_mx_qfx }} unit
 delete interfaces {{ vni.iface_mx_qfx }} flexible-vlan-tagging
 delete interfaces {{ vni.iface_mx_qfx }} encapsulation flexible-ethernet-services
-delete interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} encapsulation vlan-bridge
-delete interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} vlan-tags outer {{ vni.s_vlan }}
-delete interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} input-vlan-map pop
-delete interfaces {{ vni.iface_mx_qfx }} unit {{ vni.s_vlan }} output-vlan-map push
 delete bridge-domains bd-{{ vni.s_vlan }}
 delete interfaces irb
 delete routing-instances {{ vni.ri_name }}
