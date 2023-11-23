@@ -1,4 +1,4 @@
-- name: Config Juniper MX-480 eBGP
+- name: Config Juniper MX-480 eBGP Overlay
   hosts: mx-series
   gather_facts: no
   vars:
