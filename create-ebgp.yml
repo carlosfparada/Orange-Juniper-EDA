@@ -7,9 +7,9 @@
     - vars/setup.yml
     - vars/ebgp.yml
   tasks:
-    - name: Config eBGP Overlay
+    - name: Config Juniper MX-480 eBGP Overlay
       junipernetworks.junos.junos_config:
         src: "templates/ebgp-mx.j2"
         confirm_commit: yes
         update: merge
-        comment: Config eBGP Overlay
+        comment: Config Juniper MX-480 eBGP Overlay
