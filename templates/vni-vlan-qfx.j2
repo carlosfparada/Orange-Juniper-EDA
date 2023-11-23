@@ -11,7 +11,7 @@ set interfaces {{ vni.iface_qfx_mx }} mtu 9216
 set interfaces {{ vni.iface_qfx_mx }} encapsulation flexible-ethernet-services
 set interfaces {{ vni.iface_qfx_mx }} unit {{ vni.c_vlan }} family ethernet-switching interface-mode trunk
 set interfaces {{ vni.iface_qfx_mx }} unit {{ vni.c_vlan }} family ethernet-switching vlan members {{ vni.c_vlan_name }}
-set vlans {{ vni.c_vlan_name }} description QFXVLAN_{{ vni.c_vlan_name }}
+set vlans {{ vni.c_vlan_name }} description QFX2VLAN_{{ vni.c_vlan_name }}
 set vlans {{ vni.c_vlan_name }} vlan-id {{ vni.c_vlan }}
 {% endfor %}
 
