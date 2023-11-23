@@ -9,6 +9,7 @@ delete interfaces {{ vni.iface_qfx_mx }} description QFX2MX_{{ vni.iface_qfx_mx 
 delete interfaces {{ vni.iface_qfx_mx }} flexible-vlan-tagging
 delete interfaces {{ vni.iface_qfx_mx }} mtu 9216
 delete interfaces {{ vni.iface_qfx_mx }} encapsulation flexible-ethernet-services
+delete interfaces {{ vni.iface_qfx_mx }} unit 0
 delete interfaces {{ vni.iface_qfx_mx }} unit {{ vni.c_vlan }}
 delete vlans {{ vni.c_vlan_name }}
 {% endfor %}
