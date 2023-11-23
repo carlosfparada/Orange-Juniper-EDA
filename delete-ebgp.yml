@@ -1,0 +1,16 @@
+- name: Delete Juniper MX-480
+  hosts: mx-series
+  gather_facts: no
+  vars:
+    ansible_command_timeout: 300
+  vars_files:
+    - vars/setup.yml
+    - vars/ebgp.yml
+    - vars/vni-vxlan.yml
+  tasks:
+    - name: Delete Juniper MX-480 eBGP Overlay
+      junipernetworks.junos.junos_config:
+        src: "templates/ebgp-delete-mx.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Delete Juniper MX-480 eBGP Overlay

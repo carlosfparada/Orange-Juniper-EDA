@@ -1,0 +1,16 @@
+- name: Delete Juniper MX-480 Setup
+  hosts: mx-series
+  gather_facts: no
+  vars:
+    ansible_command_timeout: 300
+  vars_files:
+    - vars/setup.yml
+  tasks:
+    - name: Delete Juniper MX-480 setup (not automation needed in PoC, can break stuff)
+      junipernetworks.junos.junos_config:
+        src: "templates/setup-delete-mx.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Delete Juniper MX-480 setup
+
+   

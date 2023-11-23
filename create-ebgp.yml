@@ -1,0 +1,15 @@
+- name: Config Juniper MX-480 eBGP
+  hosts: mx-series
+  gather_facts: no
+  vars:
+    ansible_command_timeout: 300
+  vars_files:
+    - vars/setup.yml
+    - vars/ebgp.yml
+  tasks:
+    - name: Config eBGP Overlay
+      junipernetworks.junos.junos_config:
+        src: "templates/ebgp-mx.j2"
+        confirm_commit: yes
+        update: merge
+        comment: Config eBGP Overlay
