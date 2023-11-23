@@ -1,4 +1,4 @@
-- name: Delete Juniper MX-480
+- name: Delete Juniper MX-480 VXLAN
   hosts: mx-series
   gather_facts: no
   vars:
@@ -7,11 +7,11 @@
     - vars/setup.yml
     - vars/vni-vxlan.yml
   tasks:
-    - name: Delete Layer 2/3 VNIs VXLAN
+    - name: Delete Juniper MX-480 VXLAN
       junipernetworks.junos.junos_config:
         src: "templates/vni-vxlan-delete-mx.j2"
         confirm_commit: yes
         update: merge
-        comment: Delete Layer 2/3 VNIs VXLAN
+        comment: Delete Juniper MX-480 VXLAN
 
    

@@ -7,7 +7,7 @@
     - vars/setup.yml
     - vars/vni-vxlan.yml
   tasks:
-    - name: Config Layer 2/3 VNIs VXLAN
+    - name: Config Juniper MX-480 VXLAN
       junipernetworks.junos.junos_config:
         src: "templates/vni-vxlan-mx.j2"
         confirm_commit: yes
