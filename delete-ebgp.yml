@@ -6,7 +6,6 @@
   vars_files:
     - vars/setup.yml
     - vars/ebgp.yml
-    - vars/vni-vxlan.yml
   tasks:
     - name: Delete Juniper MX-480 eBGP Overlay
       junipernetworks.junos.junos_config:

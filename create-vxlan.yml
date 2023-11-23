@@ -5,21 +5,8 @@
     ansible_command_timeout: 300
   vars_files:
     - vars/setup.yml
-    - vars/ebgp.yml
     - vars/vni-vxlan.yml
   tasks:
-    # - name: Router setup (not automation needed in PoC)
-    #   junipernetworks.junos.junos_config:
-    #     src: "templates/setup-mx.j2"
-    #     confirm_commit: yes
-    #     update: merge
-    #     comment: Router setup
-    # - name: Config eBGP Overlay
-    #   junipernetworks.junos.junos_config:
-    #     src: "templates/ebgp-mx.j2"
-    #     confirm_commit: yes
-    #     update: merge
-    #     comment: Config eBGP Overlay
     - name: Config Layer 2/3 VNIs VXLAN
       junipernetworks.junos.junos_config:
         src: "templates/vni-vxlan-mx.j2"
