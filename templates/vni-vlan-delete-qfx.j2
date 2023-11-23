@@ -1,0 +1,35 @@
+{% for vni in vnis %}
+delete interfaces {{ vni.iface_qfx_comp }} description QFX2COMP_{{ vni.iface_qfx_comp }}
+delete interfaces {{ vni.iface_qfx_comp }} flexible-vlan-tagging
+delete interfaces {{ vni.iface_qfx_comp }} mtu 9216
+delete interfaces {{ vni.iface_qfx_comp }} encapsulation flexible-ethernet-services
+delete interfaces {{ vni.iface_qfx_comp }} unit 0
+delete interfaces {{ vni.iface_qfx_comp }} unit {{ vni.c_vlan }}
+delete interfaces {{ vni.iface_qfx_mx }} description QFX2MX_{{ vni.iface_qfx_mx }}
+delete interfaces {{ vni.iface_qfx_mx }} flexible-vlan-tagging
+delete interfaces {{ vni.iface_qfx_mx }} mtu 9216
+delete interfaces {{ vni.iface_qfx_mx }} encapsulation flexible-ethernet-services
+delete interfaces {{ vni.iface_qfx_mx }} unit {{ vni.c_vlan }}
+delete vlans {{ vni.c_vlan_name }}
+{% endfor %}
+
+
+
+{#
+set interfaces <IF_NAME_TO_COMPUTE> description <IF_DESCRIPTION>
+set interfaces <IF_NAME_TO_COMPUTE> flexible-vlan-tagging
+set interfaces <IF_NAME_TO_COMPUTE> mtu 9216
+set interfaces <IF_NAME_TO_COMPUTE> encapsulation flexible-ethernet-services
+set interfaces <IF_NAME_TO_COMPUTE> unit <CVLAN_ID> family ethernet-switching interface-mode trunk
+set interfaces <IF_NAME_TO_COMPUTE> unit <CVLAN_ID> family ethernet-switching vlan members <CVLAN_NAME>
+
+set interfaces <IF_NAME_TO_MX> description <IF_DESCRIPTION>
+set interfaces <IF_NAME_TO_MX> flexible-vlan-tagging
+set interfaces <IF_NAME_TO_MX> mtu 9216
+set interfaces <IF_NAME_TO_MX> encapsulation flexible-ethernet-services
+set interfaces <IF_NAME_TO_MX> unit <CVLAN_ID> family ethernet-switching interface-mode trunk
+set interfaces <IF_NAME_TO_MX> unit <CVLAN_ID> family ethernet-switching vlan members <CVLAN_NAME>
+
+set vlans <CVLAN_NAME> description <CVLAN_DESCRIPTION>
+set vlans <CVLAN_NAME> vlan-id <CVLAN_ID>
+#}
